@@ -17,7 +17,7 @@
 
   <title>Lineysoft.com</title>
 </head>
-<body style="min-height: 50rem; padding-top: 4.5rem;">
+<body class="bg-light" style="min-height: 50rem; padding-top: 4.5rem;">
 
 <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-info p-2">
   <a class="navbar-brand" href="/"><i class="fa fa-file-alt"></i> Factura Electronica</a>
@@ -80,7 +80,7 @@
     </ul>
     <ul class="navbar-nav">
       <li class="nav-item">
-        <a href="" class="nav-link"><i class="fa fa-sign-in-alt"></i> Registro</a>
+        <a href="/register" class="nav-link"><i class="fa fa-sign-in-alt"></i> Registro</a>
       </li>
     </ul>
   </div>
