@@ -13,7 +13,7 @@
   <link rel="stylesheet" href="/vendor/components/font-awesome/css/fontawesome-all.css">
 
   <script src="/assets/js/vue.js"></script>
-  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+  <script src="/assets/js/axios.min.js"></script>
 
   <title>Lineysoft.com</title>
 </head>
