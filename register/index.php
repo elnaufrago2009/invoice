@@ -59,17 +59,18 @@
           <h4 class="mb-3">Llene los datos personales</h4>
 
           <!-- Form -->
-          <form v-on:submit.prevent="register(datos)">
+          <form @submit.prevent="register()">
 
             <!-- Nombre -->
             <div class="mb-3">
               <label for="email">Nombre Completo</label>
               <input
                   type="text"
-                  class="form-control form-control-lg is-invalid"
+                  class="form-control form-control-lg"
+                  v-bind:class="{'is-invalid':error.nombre}"
                   placeholder="Juan Perez Gutierrez"
-                  v-model="datos.nombre" required>
-              <div class="text-danger" v-show="true">
+                  v-model="datos.nombre">
+              <div class="invalid-feedback" v-show="error.nombre">
                 Este campo no puede estar vacio
               </div>
             </div>
@@ -79,12 +80,12 @@
               <label for="email">Telefono</label>
               <input
                   type="text"
-                  class="form-control form-control-lg was-validated"
+                  class="form-control form-control-lg"
+                  v-bind:class="{'is-invalid':error.telefono}"
                   placeholder="952631806"
-                  v-model="datos.telefono"
-                  required>
-              <div class="invalid-feedback">
-                Este campo no puede estar vacio.
+                  v-model="datos.telefono">
+              <div class="invalid-feedback" v-show="error.telefono">
+                Telefono no puede estar vacio.
               </div>
             </div>
 
@@ -99,10 +100,10 @@
                   type="email" 
                   class="form-control" 
                   placeholder="correo@gmail.com"
-                  v-model="datos.email"
-                  required>
-                <div class="invalid-feedback" style="width: 100%;">
-                  Your username is required.
+                  v-bind:class="{'is-invalid':error.email}"
+                  v-model="datos.email">
+                <div class="invalid-feedback" v-show="error.email">
+                  Error en el email.
                 </div>
               </div>
             </div>
@@ -120,10 +121,10 @@
                     type="password" 
                     class="form-control" 
                     placeholder="**********"
-                    v-model="datos.contra1"
-                    required>
-                  <div class="invalid-feedback" style="width: 100%;">
-                    Your username is required.
+                    v-bind:class="{'is-invalid':error.contra1}"
+                    v-model="datos.contra1">
+                  <div class="invalid-feedback" v-show="error.contra1">
+                    Error en la conrtaseña.
                   </div>
                 </div>
               </div>
@@ -138,14 +139,11 @@
                     type="password" 
                     class="form-control" 
                     placeholder="**********"
-                    v-model="datos.contra2"
-                    required>
-                  <div class="invalid-feedback" style="width: 100%;">
-                    Your username is required.
+                    v-bind:class="{'is-invalid':error.contra2}"
+                    v-model="datos.contra2">
+                  <div class="invalid-feedback" v-show="error.contra2">
+                    Error en la conrtaseña.
                   </div>
-                </div>
-                <div class="invalid-feedback">
-                  Valid last name is required.
                 </div>
               </div>
             </div>
@@ -161,10 +159,10 @@
                   type="text" 
                   class="form-control" 
                   placeholder="12345678912"
-                  v-model="datos.ruc"
-                  required>
-                <div class="invalid-feedback" style="width: 100%;">
-                  Your username is required.
+                  v-bind:class="{'is-invalid':error.ruc}"
+                  v-model="datos.ruc">
+                <div class="invalid-feedback" v-show="error.ruc" style="width: 100%;">
+                  Error en el RUC.
                 </div>
               </div>
             </div>
@@ -188,11 +186,79 @@
     el: '#app',
     data: {
       message: 'moises',
-      datos: {}
+      datos: {
+        nombre: '',
+        telefono: '',
+        email: '',
+        contra1: '',
+        contra2: '',
+        ruc: ''
+      },
+      error: {        
+        nombre: false,
+        telefono: false,
+        email: false,
+        contra1: false,
+        contra2: false,
+        ruc: false
+      }
     },
     methods: {
-      register: function (register) {
-        console.log(register);
+      register: function () {
+
+        // Nombre
+        if (this.datos.nombre.length < 3 ) {
+          this.error.nombre = true;          
+        }else{
+          this.error.nombre = false;
+        }
+
+        // Telefono
+        if (this.datos.telefono.length < 3 ) {
+          this.error.telefono = true;
+        }else{
+          this.error.telefono = false;
+        }
+
+        // Email
+        if (this.datos.email.length < 3 ) {
+          this.error.email = true;
+        }else{
+          this.error.email = false;
+        }
+
+        // Contra 1
+        if (this.datos.contra1.length < 3 ) {
+            this.error.contra1 = true;
+        }else{
+            this.error.contra1 = false;
+        }
+
+        // Contra 2
+        if (this.datos.contra2.length < 3 ) {
+            this.error.contra2 = true;
+        }else{
+            this.error.contra2 = false;
+        }
+
+        // Ruc
+        if (this.datos.ruc.length < 3 ) {
+            this.error.ruc = true;
+        }else{
+            this.error.ruc = false;
+        }
+
+        // consulta
+        if ((this.error.nombre == false) && (this.error.telefono == false) && (this.error.email == false) && (this.error.contra1 == false) && (this.error.contra2 == false) && (this.error.contra1 == this.error.contra2) && (this.error.ruc == false)) {
+          axios.get('../api/check_ruc.php?ruc=' + this.datos.ruc).then(response => {
+            if (response.data == true){
+              this.error.ruc = false;
+            }else{
+              this.error.ruc = true;
+            }
+            console.log(response.data);
+          });
+        }
       }
     }
   });

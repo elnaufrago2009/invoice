@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "538a8b9e694110af2da1dea5653a87a4",
+    "content-hash": "2b6aa91e0b79405b4e277803ae8e6cfa",
     "packages": [
         {
             "name": "components/font-awesome",
@@ -40,6 +40,56 @@
             ],
             "description": "Font Awesome, the iconic SVG, font, and CSS framework.",
             "time": "2018-02-11T17:32:00+00:00"
+        },
+        {
+            "name": "jossmp/sunatphp",
+            "version": "v1.7",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/JossMP/SunatPHP.git",
+                "reference": "47c546e69381ada39cfbc0ed8587dd0066dc53f6"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/JossMP/SunatPHP/zipball/47c546e69381ada39cfbc0ed8587dd0066dc53f6",
+                "reference": "47c546e69381ada39cfbc0ed8587dd0066dc53f6",
+                "shasum": ""
+            },
+            "require": {
+                "ext-curl": "*",
+                "lib-curl": "*"
+            },
+            "require-dev": {
+                "php": ">=5.2"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Sunat\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Josue Mazco Puma",
+                    "email": "jossmp@gmail.com",
+                    "homepage": "https://geekdev.ml/",
+                    "role": "Developers"
+                }
+            ],
+            "description": "Clase para realizar consultas a sunat Peru mediante el numero de ruc o dni",
+            "homepage": "https://github.com/JossMP/SunatPHP",
+            "keywords": [
+                "consulta",
+                "curl",
+                "peru",
+                "php",
+                "sunat"
+            ],
+            "time": "2018-02-16T21:20:24+00:00"
         },
         {
             "name": "twbs/bootstrap",
