@@ -170,7 +170,9 @@
             <hr class="mb-4">
             <button
                 class="btn btn-primary btn-lg btn-block"
+                :disabled="error.button_send"
                 type="submit">
+              <i class="fa fa-spinner fa-spin" v-show="error.button_send"></i>
               Registrarme</button>
           </form>
           <!-- End Form -->
@@ -200,11 +202,15 @@
         email: false,
         contra1: false,
         contra2: false,
-        ruc: false
+        ruc: false,
+        button_send: false
       }
     },
     methods: {
       register: function () {
+
+        //button send
+        this.error.button_send = true;
 
         // Nombre
         if (this.datos.nombre.length < 3 ) {
@@ -256,9 +262,11 @@
             }else{
               this.error.ruc = true;
             }
+
             console.log(response.data);
           });
         }
+        this.error.button_send = false;
       }
     }
   });
