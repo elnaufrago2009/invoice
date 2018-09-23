@@ -256,13 +256,12 @@
 
         // consulta
         if ((this.error.nombre == false) && (this.error.telefono == false) && (this.error.email == false) && (this.error.contra1 == false) && (this.error.contra2 == false) && (this.error.contra1 == this.error.contra2) && (this.error.ruc == false)) {
-          axios.get('../api/check_ruc.php?ruc=' + this.datos.ruc).then(response => {
+          axios.post('../api/check_ruc.php', this.datos).then(response => {
             if (response.data == true){
               this.error.ruc = false;
             }else{
               this.error.ruc = true;
             }
-
             console.log(response.data);
           });
         }

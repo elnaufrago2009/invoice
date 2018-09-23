@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 23-09-2018 a las 08:19:37
+-- Tiempo de generación: 23-09-2018 a las 22:04:06
 -- Versión del servidor: 10.1.33-MariaDB
 -- Versión de PHP: 7.2.6
 
@@ -39,11 +39,82 @@ CREATE TABLE `customers` (
 -- --------------------------------------------------------
 
 --
+-- Estructura de tabla para la tabla `documentos`
+--
+
+CREATE TABLE `documentos` (
+  `id` int(11) NOT NULL,
+  `abrevia` varchar(4) DEFAULT NULL,
+  `descripcion` varchar(100) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Volcado de datos para la tabla `documentos`
+--
+
+INSERT INTO `documentos` (`id`, `abrevia`, `descripcion`) VALUES
+(1, 'F', 'FACTURA ELECTRÓNICA'),
+(2, 'B', 'BOLETA DE VENTA ELECTRÓNICA'),
+(3, 'NC', 'NOTA DE CRÉDITO ELECTRÓNICA'),
+(4, 'NB', 'NOTA DE DÉBITO ELECTRÓNICA'),
+(5, 'GR', 'GUÍA DE REMISIÓN REMITENTE ELECTRÓNICA');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `emisores`
+--
+
+CREATE TABLE `emisores` (
+  `id` int(11) NOT NULL,
+  `ruc` varchar(12) DEFAULT NULL,
+  `razon_nombre` varchar(300) DEFAULT NULL,
+  `telefono` varchar(100) DEFAULT NULL,
+  `email` varchar(150) DEFAULT NULL,
+  `web` varchar(250) DEFAULT NULL,
+  `razon_comercial` varchar(300) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `locales`
+--
+
+CREATE TABLE `locales` (
+  `id` int(11) NOT NULL,
+  `codigo` varchar(5) DEFAULT NULL,
+  `descripcion` varchar(300) DEFAULT NULL,
+  `ubigeo` varchar(8) DEFAULT NULL,
+  `direccion` varchar(300) DEFAULT NULL,
+  `departamento` varchar(50) DEFAULT NULL,
+  `provincia` varchar(50) DEFAULT NULL,
+  `distrito` varchar(50) DEFAULT NULL,
+  `emisor_id` int(6) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `series`
+--
+
+CREATE TABLE `series` (
+  `id` int(11) NOT NULL,
+  `serie` varchar(4) DEFAULT NULL,
+  `documento_id` int(3) DEFAULT NULL,
+  `local_id` int(3) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
 -- Estructura de tabla para la tabla `users`
 --
 
 CREATE TABLE `users` (
   `id` int(6) NOT NULL,
+  `nombre` varchar(100) DEFAULT NULL,
   `email` varchar(60) NOT NULL,
   `password` varchar(60) NOT NULL,
   `ruc` varchar(11) NOT NULL,
@@ -58,6 +129,30 @@ CREATE TABLE `users` (
 -- Indices de la tabla `customers`
 --
 ALTER TABLE `customers`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indices de la tabla `documentos`
+--
+ALTER TABLE `documentos`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indices de la tabla `emisores`
+--
+ALTER TABLE `emisores`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indices de la tabla `locales`
+--
+ALTER TABLE `locales`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indices de la tabla `series`
+--
+ALTER TABLE `series`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -77,10 +172,34 @@ ALTER TABLE `customers`
   MODIFY `id` int(6) NOT NULL AUTO_INCREMENT;
 
 --
+-- AUTO_INCREMENT de la tabla `documentos`
+--
+ALTER TABLE `documentos`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
+--
+-- AUTO_INCREMENT de la tabla `emisores`
+--
+ALTER TABLE `emisores`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT de la tabla `locales`
+--
+ALTER TABLE `locales`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT de la tabla `series`
+--
+ALTER TABLE `series`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
 -- AUTO_INCREMENT de la tabla `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(6) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(6) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
