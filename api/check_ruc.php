@@ -25,6 +25,8 @@
     // si es nuevo ruc en la bd
     if ($ruc_count['counte'] == 0){
 
+      // crear usuario (para agregar id al local)
+
       // crear emisor
       $inser_emisor = "insert into emisores (ruc,razon_social,razon_comercial) values ('$sunat_ruc','$sunat_razon_social','$sunat_razon_comercial')";
       $conn->query($inser_emisor);
@@ -33,7 +35,9 @@
       $emisor_id = $conn->insert_id;
       $crear_local = "insert into locales (codigo,descripcion,direccion,emisor_id) values ('001','$sunat_razon_social','$sunat_direccion','$emisor_id')";
       $conn->query($crear_local);
-      //echo $conn->insert_id;
+
+      // crear series (asociadas a local)
+      $local_id = $conn->insert_id;
 
 
       //$user_inser = "insert into users (nombre,email,password,ruc) values ('$nombre','$email','$password','$ruc')";
