@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.8.1
+-- version 4.8.2
 -- https://www.phpmyadmin.net/
 --
--- Servidor: 127.0.0.1
--- Tiempo de generación: 23-09-2018 a las 22:04:06
--- Versión del servidor: 10.1.33-MariaDB
--- Versión de PHP: 7.2.6
+-- Servidor: localhost
+-- Tiempo de generación: 24-09-2018 a las 05:49:33
+-- Versión del servidor: 10.1.34-MariaDB
+-- Versión de PHP: 7.0.31
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -68,12 +68,19 @@ INSERT INTO `documentos` (`id`, `abrevia`, `descripcion`) VALUES
 CREATE TABLE `emisores` (
   `id` int(11) NOT NULL,
   `ruc` varchar(12) DEFAULT NULL,
-  `razon_nombre` varchar(300) DEFAULT NULL,
+  `razon_social` varchar(300) DEFAULT NULL,
   `telefono` varchar(100) DEFAULT NULL,
   `email` varchar(150) DEFAULT NULL,
   `web` varchar(250) DEFAULT NULL,
   `razon_comercial` varchar(300) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Volcado de datos para la tabla `emisores`
+--
+
+INSERT INTO `emisores` (`id`, `ruc`, `razon_social`, `telefono`, `email`, `web`, `razon_comercial`) VALUES
+(8, '20532710066', 'SUR MOTRIZ SOCIEDAD COMERCIAL DE RESPONSABILIDAD LIMITADA- SURMOTRIZ S.R.L.', NULL, NULL, NULL, 'TOYOTA SURMOTRIZ');
 
 -- --------------------------------------------------------
 
@@ -92,6 +99,13 @@ CREATE TABLE `locales` (
   `distrito` varchar(50) DEFAULT NULL,
   `emisor_id` int(6) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Volcado de datos para la tabla `locales`
+--
+
+INSERT INTO `locales` (`id`, `codigo`, `descripcion`, `ubigeo`, `direccion`, `departamento`, `provincia`, `distrito`, `emisor_id`) VALUES
+(1, '001', 'SUR MOTRIZ SOCIEDAD COMERCIAL DE RESPONSABILIDAD LIMITADA- SURMOTRIZ S.R.L.', NULL, 'AV. LEGUIA NRO. 1870 (FRENTE A I.E. JOSE ROSA ARA) TACNA - TACNA - TACNA', NULL, NULL, NULL, 8);
 
 -- --------------------------------------------------------
 
@@ -181,13 +195,13 @@ ALTER TABLE `documentos`
 -- AUTO_INCREMENT de la tabla `emisores`
 --
 ALTER TABLE `emisores`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT de la tabla `locales`
 --
 ALTER TABLE `locales`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT de la tabla `series`
@@ -199,7 +213,7 @@ ALTER TABLE `series`
 -- AUTO_INCREMENT de la tabla `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(6) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(6) NOT NULL AUTO_INCREMENT;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
