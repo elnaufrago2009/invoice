@@ -26,22 +26,31 @@
     if ($ruc_count['counte'] == 0){
 
       // crear usuario (para agregar id al local)
+      $create_user = "insert into users (nombre,email,password) values ('$nombre','$email','$password')";
+      $conn->query($create_user);
+      $create_user_id = $conn->insert_id;
 
-      // crear emisor
-      $inser_emisor = "insert into emisores (ruc,razon_social,razon_comercial) values ('$sunat_ruc','$sunat_razon_social','$sunat_razon_comercial')";
-      $conn->query($inser_emisor);
+      // crear emisor1
+      $create_emisor = "insert into emisores (ruc,razon_social,razon_comercial) values ('$sunat_ruc','$sunat_razon_social','$sunat_razon_comercial')";
+      $conn->query($create_emisor);
+      $create_emisor_id = $conn->insert_id;
 
-      // crear local
-      $emisor_id = $conn->insert_id;
-      $crear_local = "insert into locales (codigo,descripcion,direccion,emisor_id) values ('001','$sunat_razon_social','$sunat_direccion','$emisor_id')";
-      $conn->query($crear_local);
+      // crear local      
+      $create_local = "insert into locales (codigo,descripcion,direccion,emisor_id) values ('001','$sunat_razon_social','$sunat_direccion','$emisor_id')";
+      $conn->query($create_local);
+      $create_local_id = $conn->insert_id;
 
       // crear series (asociadas a local)
-      $local_id = $conn->insert_id;
+      $default_factura  = 'F001';
+      $default_boleta   = 'B001' ;
+      $default_nota_credito_factura = 'FC01';
+      $default_nota_credito_boleta = 'BC01';
+      $default_nota_debito_factura = 'FD01';
+      $default_nota_debito_boleta = 'BD01';
+      $default_guia_remision = 'T001';
 
 
-      //$user_inser = "insert into users (nombre,email,password,ruc) values ('$nombre','$email','$password','$ruc')";
-      //$conn->query($user_inser);
+      
 
       echo json_encode($datos);
     }else{
