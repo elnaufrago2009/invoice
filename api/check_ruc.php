@@ -36,7 +36,7 @@
       $create_emisor_id = $conn->insert_id;
 
       // crear local      
-      $create_local = "insert into locales (codigo,descripcion,direccion,emisor_id) values ('001','$sunat_razon_social','$sunat_direccion','$emisor_id')";
+      $create_local = "insert into locales (codigo,descripcion,direccion,emisor_id) values ('001','$sunat_razon_social','$sunat_direccion','$create_emisor_id')";
       $conn->query($create_local);
       $create_local_id = $conn->insert_id;
 
@@ -49,8 +49,8 @@
       $default_nota_debito_boleta = 'BD01';
       $default_guia_remision = 'T001';
 
-
-      
+      $create_series = "insert into series (serie,documento_id,local_id) values ('$default_factura','1','$create_local_id')";
+      $conn->query($create_series);      
 
       echo json_encode($datos);
     }else{
