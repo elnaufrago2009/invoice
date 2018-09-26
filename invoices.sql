@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.8.2
+-- version 4.8.1
 -- https://www.phpmyadmin.net/
 --
--- Servidor: localhost
--- Tiempo de generación: 24-09-2018 a las 05:49:33
--- Versión del servidor: 10.1.34-MariaDB
--- Versión de PHP: 7.0.31
+-- Servidor: 127.0.0.1
+-- Tiempo de generación: 26-09-2018 a las 21:07:40
+-- Versión del servidor: 10.1.33-MariaDB
+-- Versión de PHP: 7.2.6
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -80,7 +80,7 @@ CREATE TABLE `emisores` (
 --
 
 INSERT INTO `emisores` (`id`, `ruc`, `razon_social`, `telefono`, `email`, `web`, `razon_comercial`) VALUES
-(8, '20532710066', 'SUR MOTRIZ SOCIEDAD COMERCIAL DE RESPONSABILIDAD LIMITADA- SURMOTRIZ S.R.L.', NULL, NULL, NULL, 'TOYOTA SURMOTRIZ');
+(11, '10425162531', 'LINARES OSCCO ABRAHAM MOISES', NULL, NULL, NULL, '-');
 
 -- --------------------------------------------------------
 
@@ -105,7 +105,8 @@ CREATE TABLE `locales` (
 --
 
 INSERT INTO `locales` (`id`, `codigo`, `descripcion`, `ubigeo`, `direccion`, `departamento`, `provincia`, `distrito`, `emisor_id`) VALUES
-(1, '001', 'SUR MOTRIZ SOCIEDAD COMERCIAL DE RESPONSABILIDAD LIMITADA- SURMOTRIZ S.R.L.', NULL, 'AV. LEGUIA NRO. 1870 (FRENTE A I.E. JOSE ROSA ARA) TACNA - TACNA - TACNA', NULL, NULL, NULL, 8);
+(3, '001', 'LINARES OSCCO ABRAHAM MOISES', NULL, '-', NULL, NULL, NULL, 10),
+(4, '001', 'LINARES OSCCO ABRAHAM MOISES', NULL, '-', NULL, NULL, NULL, 11);
 
 -- --------------------------------------------------------
 
@@ -120,6 +121,13 @@ CREATE TABLE `series` (
   `local_id` int(3) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Volcado de datos para la tabla `series`
+--
+
+INSERT INTO `series` (`id`, `serie`, `documento_id`, `local_id`) VALUES
+(3, 'F001', 1, 4);
+
 -- --------------------------------------------------------
 
 --
@@ -131,9 +139,15 @@ CREATE TABLE `users` (
   `nombre` varchar(100) DEFAULT NULL,
   `email` varchar(60) NOT NULL,
   `password` varchar(60) NOT NULL,
-  `ruc` varchar(11) NOT NULL,
   `activo` varchar(1) NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Volcado de datos para la tabla `users`
+--
+
+INSERT INTO `users` (`id`, `nombre`, `email`, `password`, `activo`) VALUES
+(3, 'abraham', 'elnaufrago2009@gmail.com', '1234', '0');
 
 --
 -- Índices para tablas volcadas
@@ -195,25 +209,25 @@ ALTER TABLE `documentos`
 -- AUTO_INCREMENT de la tabla `emisores`
 --
 ALTER TABLE `emisores`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT de la tabla `locales`
 --
 ALTER TABLE `locales`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT de la tabla `series`
 --
 ALTER TABLE `series`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT de la tabla `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(6) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(6) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
