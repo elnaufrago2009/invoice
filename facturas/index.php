@@ -104,9 +104,9 @@
 
           <!-- Form -->
           <form @submit.prevent="register()">
-
-            <!-- Primera linea -->
             <div class="row">
+
+              <!-- Primera linea -->
               <!-- Cliente -->
               <div class="col-sm-6">
                 <label>Cliente</label>
@@ -136,6 +136,22 @@
                 </div>
               </div>
             </div>
+
+            <!-- Segunda fila -->
+            <div class="row">
+              <div class="col-sm-3">
+                <label for="exampleFormControlSelect1">Tipo Operacion</label>
+                <select class="form-control" id="exampleFormControlSelect1">
+                  <option>F001</option>
+                  <option>F002</option>
+                  <option>F003</option>
+                </select>
+              </div>
+              <div class="col-sm-3"></div>
+              <div class="col-sm-3"></div>
+              <div class="col-sm-3"></div>
+            </div>
+
 
             <!-- Nombre -->
             <div class="mb-3">
