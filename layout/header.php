@@ -8,7 +8,6 @@
   <!-- Bootstrap CSS -->
   <link rel="stylesheet" href="/vendor/twbs/bootstrap/dist/css/bootstrap.css" >
   <link rel="stylesheet" href="/assets/css/style.css">
-
   <link rel="stylesheet" href="/vendor/components/font-awesome/css/fontawesome-all.css">
 
   <script src="/assets/js/vue.js"></script>
@@ -77,10 +76,25 @@
         </div>
       </li>
     </ul>
-    <ul class="navbar-nav">
-      <li class="nav-item">
-        <a href="/register" class="nav-link"><i class="fa fa-sign-in-alt"></i> Registro</a>
-      </li>
+    <ul class="navbar-nav flex-row ml-md-auto d-none d-md-flex">
+      <?php if ($user_acces == 'ok') { ?>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Tu Cuenta</a>
+          <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdown01">
+            <a class="dropdown-item" href="#">Emisor</a>
+            <a class="dropdown-item" href="#">Locales</a>
+            <a class="dropdown-item" href="#">Series</a>
+            <a class="dropdown-item" href="#">Usuarios</a>
+            <a class="dropdown-item" href="#">Tu Datos</a>
+            <a class="dropdown-item" href="/api/salir.php"><i class="fa fa-sign-out-alt"></i> Salir</a>
+          </div>
+        </li>
+      <?php }else{ ?>
+        <li>
+          <a href="/register" class="nav-link"><i class="fa fa-sign-in-alt"></i> Registro</a>
+        </li>
+      <?php } ?>
+
     </ul>
   </div>
 </nav>

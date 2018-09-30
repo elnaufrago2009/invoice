@@ -1,3 +1,4 @@
+<?php include '../config/validate.php' ?>
 <?php include '../layout/header.php'; ?>
 <main class="container" id="app">
 

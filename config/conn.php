@@ -1,6 +1,6 @@
 <?php
   // conexion
-  $conn = new mysqli('localhost', 'root', '', 'invoices');
+  $conn = new mysqli('localhost', 'root', '', 'invoice');
 
   // error de conexion
   if ($conn->connect_errno) {
