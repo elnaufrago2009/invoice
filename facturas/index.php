@@ -107,11 +107,34 @@
 
             <!-- Primera linea -->
             <div class="row">
+              <!-- Cliente -->
               <div class="col-sm-6">
-
+                <label>Cliente</label>
+                <div class="input-group">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text"><i class="fa fa-search"></i></span>
+                  </div>
+                  <input type="text" class="form-control" placeholder="" v-bind:class="{'is-invalid':error.email}" v-model="datos.email">
+                  <div class="invalid-feedback" v-show="error.email">
+                    Error en el email.
+                  </div>
+                </div>
               </div>
-              <div class="col-sm-3"></div>
-              <div class="col-sm-3"></div>
+              <!-- Serie -->
+              <div class="col-sm-2">
+                <label for="exampleFormControlSelect1">Serie</label>
+                <select class="form-control" id="exampleFormControlSelect1">
+                  <option>F001</option>
+                  <option>F002</option>
+                  <option>F003</option>
+                </select>
+              </div>
+              <div class="col-sm-4">
+                <div class="form-group">
+                  <label for="exampleInputEmail1">Fecha Emision</label>
+                  <input type="date" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="">
+                </div>
+              </div>
             </div>
 
             <!-- Nombre -->
