@@ -139,125 +139,47 @@
 
             <!-- Segunda fila -->
             <div class="row">
+
+              <!-- Tipo Operacion -->
               <div class="col-sm-3">
                 <label for="exampleFormControlSelect1">Tipo Operacion</label>
                 <select class="form-control" id="exampleFormControlSelect1">
-                  <option>F001</option>
-                  <option>F002</option>
-                  <option>F003</option>
+                  <option>Venta Interna</option>
+                  <option>Anticipo o Deduccion de anticipo en venta interna</option>
+                  <option>Exportacion</option>
                 </select>
               </div>
-              <div class="col-sm-3"></div>
-              <div class="col-sm-3"></div>
-              <div class="col-sm-3"></div>
-            </div>
-
-
-            <!-- Nombre -->
-            <div class="mb-3">
-              <label for="email">Nombre Completo</label>
-              <input
-                type="text"
-                class="form-control form-control-lg"
-                v-bind:class="{'is-invalid':error.nombre}"
-                placeholder="Juan Perez Gutierrez"
-                v-model="datos.nombre">
-              <div class="invalid-feedback" v-show="error.nombre">
-                Este campo no puede estar vacio
+              <!-- Observaciones -->
+              <div class="col-sm-7">
+                <label>Observaciones</label>
+                <input type="text" class="form-control" placeholder="">
               </div>
+              <div class="col-sm-2">
+                <label>Opciones</label>
+                <a href="" class="btn btn-secondary"><i class="fa fa-lock"></i> Extra</a>
+              </div>              
             </div>
 
-            <!-- Telefono -->
-            <div class="mb-3">
-              <label for="email">Telefono</label>
-              <input
-                type="text"
-                class="form-control form-control-lg"
-                v-bind:class="{'is-invalid':error.telefono}"
-                placeholder="952631806"
-                v-model="datos.telefono">
-              <div class="invalid-feedback" v-show="error.telefono">
-                Telefono no puede estar vacio.
-              </div>
-            </div>
-
-            <!-- Email -->
-            <div class="mb-3">
-              <label>Email</label>
-              <div class="input-group input-group-lg">
-                <div class="input-group-prepend">
-                  <span class="input-group-text"><i class="fa fa-at"></i></span>
-                </div>
-                <input
-                  type="email"
-                  class="form-control"
-                  placeholder="correo@gmail.com"
-                  v-bind:class="{'is-invalid':error.email}"
-                  v-model="datos.email">
-                <div class="invalid-feedback" v-show="error.email">
-                  Error en el email.
-                </div>
-              </div>
-            </div>
-
-            <!-- Contraseña -->
+            <!-- Items -->
             <div class="row">
-              <!-- contra 1 -->
-              <div class="col-md-6 mb-3">
-                <label for="firstName">Contraseña</label>
-                <div class="input-group input-group-lg">
+              <div class="col-sm-3">
+                <label>Producto</label>
+                <div class="input-group">
                   <div class="input-group-prepend">
-                    <span class="input-group-text"><i class="fa fa-lock"></i></span>
+                    <span class="input-group-text"><i class="fa fa-search"></i></span>
                   </div>
-                  <input
-                    type="password"
-                    class="form-control"
-                    placeholder="**********"
-                    v-bind:class="{'is-invalid':error.contra1}"
-                    v-model="datos.contra1">
-                  <div class="invalid-feedback" v-show="error.contra1">
-                    Error en la conrtaseña.
+                  <input type="text" class="form-control" placeholder="" v-bind:class="{'is-invalid':error.email}" v-model="datos.email">
+                  <div class="invalid-feedback" v-show="error.email">
+                    Error en el email.
                   </div>
                 </div>
               </div>
-              <!-- contra 2 -->
-              <div class="col-md-6 mb-3">
-                <label for="lastName">Repetir Contraseña</label>
-                <div class="input-group input-group-lg">
-                  <div class="input-group-prepend">
-                    <span class="input-group-text"><i class="fa fa-lock"></i></span>
-                  </div>
-                  <input
-                    type="password"
-                    class="form-control"
-                    placeholder="**********"
-                    v-bind:class="{'is-invalid':error.contra2}"
-                    v-model="datos.contra2">
-                  <div class="invalid-feedback" v-show="error.contra2">
-                    Error en la conrtaseña.
-                  </div>
-                </div>
+              <div class="col-sm-2">
+                
               </div>
             </div>
 
-            <!-- Ruc -->
-            <div class="mb-3">
-              <label for="username">RUC</label>
-              <div class="input-group input-group-lg">
-                <div class="input-group-prepend">
-                  <span class="input-group-text"><i class="fa fa-check-circle"></i></span>
-                </div>
-                <input
-                  type="text"
-                  class="form-control"
-                  placeholder="12345678912"
-                  v-bind:class="{'is-invalid':error.ruc}"
-                  v-model="datos.ruc">
-                <div class="invalid-feedback" v-show="error.ruc" style="width: 100%;">
-                  Error en el RUC.
-                </div>
-              </div>
-            </div>
+            
 
             <hr class="mb-4">
             <button
