@@ -105,8 +105,6 @@
           <!-- Form -->
           <form @submit.prevent="register()">
             <div class="row">
-
-              <!-- Primera linea -->
               <!-- Cliente -->
               <div class="col-sm-6">
                 <label>Cliente</label>
@@ -139,7 +137,6 @@
 
             <!-- Segunda fila -->
             <div class="row">
-
               <!-- Tipo Operacion -->
               <div class="col-sm-3">
                 <label for="exampleFormControlSelect1">Tipo Operacion</label>
@@ -156,28 +153,14 @@
               </div>
               <div class="col-sm-2">
                 <label>Opciones</label>
-                <a href="" class="btn btn-secondary"><i class="fa fa-lock"></i> Extra</a>
-              </div>              
+                <button class="btn btn-secondary"><i class="fa fa-lock"></i> Extra</button>
+              </div>
             </div>
 
-            <!-- Items -->
-            <div class="row">
-              <div class="col-sm-3">
-                <label>Producto</label>
-                <div class="input-group">
-                  <div class="input-group-prepend">
-                    <span class="input-group-text"><i class="fa fa-search"></i></span>
-                  </div>
-                  <input type="text" class="form-control" placeholder="" v-bind:class="{'is-invalid':error.email}" v-model="datos.email">
-                  <div class="invalid-feedback" v-show="error.email">
-                    Error en el email.
-                  </div>
-                </div>
-              </div>
-              <div class="col-sm-2">
-                
-              </div>
-            </div>
+
+
+
+            
 
             
 
